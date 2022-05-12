@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 函数名就是指向函数的指针变量 */
+
+        /* 函数暴露只读的name属性 */
+        function foo () { }
+        let bar = function () { };
+        let baz = () => { };
+        console.log(foo.name, bar.name, baz.name);  //  foo bar baz
+
+        function foo1 () { }
+        console.log(foo.bind(null).name);  //  bound foo
+        let dog = {
+            year: 1,
+            get age () {
+                return this.year
+            },
+            set age (newAge) {
+                this.years = newAge
+            }
+        }
+        let propertyDescriptor = Object.getOwnPropertyDescriptor(dog, 'age')
+        console.log(propertyDescriptor);
+        console.log(propertyDescriptor.get.name);  //  get age
+        console.log(propertyDescriptor.set.name);  //  set age
+    </script>
+</body>
+
+</html>

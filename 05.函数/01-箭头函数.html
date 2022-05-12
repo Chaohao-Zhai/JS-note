@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 箭头函数定义函数表达式 */
+        //  箭头函数实例化的函数对象   ===   函数表达式创建的函数对象
+
+        //箭头函数
+        let arrowSum = (a, b) => {
+            return a + b;
+        }
+
+        //函数表达式创建
+        let functionExpression = function (a, b) {
+            return a + b;
+        }
+
+        console.log(arrowSum(3, 5));
+        console.log(functionExpression(3, 5));
+
+
+        /* 箭头函数没有prototype属性   不能用作构造函数 */
+    </script>
+</body>
+
+</html>

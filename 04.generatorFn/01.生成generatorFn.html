@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 生成器基础 */
+        /* 01生成器函数声明 */
+        function* generatorFn01 () { };
+        /* 02生成器函数表达式 */
+        let generatorFn02 = function* () { };
+        /* 03作为对象字面量的生成器函数 */
+        let foo = {
+            *generatorFn03 () { }
+        }
+        /* 04作为类实例方法的生成器函数 */
+        class Foo {
+            *generatorFn04 () { }
+        }
+
+        /* 
+        生成器函数调用  
+        =>  生成一个生成器对象   
+        =>  生成器对象一开始处于暂停执行状态，且实现了Iterator接口  
+        =>  调用next()使生成器开始运行  next()方法的返回值类似于迭代器  done and  value
+        */
+        function* generatorFn1 () { }  //声明生成器函数
+        const g = generatorFn1()   //调用生成器函数
+        console.log(g);   //[[GeneratorState]]: "suspended"
+        console.log(g.__proto__.next);  //ƒ next() { [native code] }
+
+        function* generatorFnfoo () {
+            return "foo"
+        }
+        let generatorfoo = generatorFnfoo();  //生成器函数只会在初次调用next()方法  才开始执行
+        console.log(generatorfoo.next());  //{value: 'foo', done: true}
+
+        /* 生成器对象实现了Iterator接口，默认的迭代器是自引用的 */
+        function* generatorFnme () { }
+        console.log(generatorFnme);  // ƒ* generatorFnme () { }
+        console.log(generatorFnme()[Symbol.iterator]);   //ƒ [Symbol.iterator]() { [native code] }
+        const gg = generatorFnme()
+        console.log(gg === gg[Symbol.iterator]());   //true
+    </script>
+</body>
+
+</html>
